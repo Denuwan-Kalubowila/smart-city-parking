@@ -1,6 +1,6 @@
 const parkingSpot= require('../models/parking_spot');
 
-const parkingController = {
+const controllers = {
     async getSpot(req,res){
         try {
             const spots = await parkingSpot.find();
@@ -137,4 +137,4 @@ const parkingController = {
     }
 }
 
-module.exports = parkingController;
+module.exports = controllers;
