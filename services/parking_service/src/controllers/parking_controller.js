@@ -1,4 +1,4 @@
-const parkingSpot= require('../models/parking_spot');
+const parkingSpot= require('../models/parkingSpot');
 
 const controllers = {
     async getSpot(req,res){
@@ -32,7 +32,13 @@ const controllers = {
     },
     async createSpot(req,res){
         try {
-            const spot = await parkingSpot.create(req.body);
+            const {spotNumber,level,type}= req.body;
+            const spot = new parkingSpot({
+                spotNumber,
+                level,
+                type
+            });
+            await spot.save();
             res.status(201).json({
                 success: true,
                 data: spot
@@ -50,7 +56,7 @@ const controllers = {
                     message: 'Parking spot not found'
                 });
             }
-            spot = await ParkingSpot.findByIdAndUpdate(
+            spot = await parkingSpot.findByIdAndUpdate(
                 req.params.id,
                 req.body,
                 {
@@ -77,7 +83,7 @@ const controllers = {
                     message: 'Parking spot not found'
                 });
             }
-            await spot.remove();
+            await spot.deleteOne();
             res.status(200).json({
                 success: true,
                 message: 'Parking spot deleted'
@@ -108,7 +114,7 @@ const controllers = {
                     message: 'Invalid status'
                 });
             }
-            const spot = await ParkingSpot.findByIdAndUpdate(
+            const spot = await parkingSpot.findByIdAndUpdate(
                 req.params.id,
                 {
                     status,

@@ -33,4 +33,5 @@ const parkingSpotSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('ParkingSpot', parkingSpotSchema);
+const ParkingSpot = mongoose.model('ParkingSpot', parkingSpotSchema);
+module.exports = ParkingSpot;

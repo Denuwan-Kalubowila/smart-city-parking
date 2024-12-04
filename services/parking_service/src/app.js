@@ -1,9 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { connect } = require('mongoose');
 const connectDB = require('./config/database');
-const e = require('express');
+const parkingRouter = require('../src/routes/route');
 
 
 const app = express();
@@ -17,6 +16,7 @@ app.use(cors())
 app.get('/health', (req, res) => {
     res.send('Hello World!');
 })
+app.use("/api/v1/parking",parkingRouter);
 
 connectDB().then(()=>{
     app.listen(PORT, () => {

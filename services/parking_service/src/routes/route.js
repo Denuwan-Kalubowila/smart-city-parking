@@ -9,3 +9,5 @@ router.post("/spot",parkingController.createSpot);
 router.put("/spot/:id",parkingController.updateSpot);
 router.delete("/spot/:id",parkingController.deleteSpot);
 router.get("/spot/status/avalable",parkingController.availableSpots);
+
+module.exports = router;
