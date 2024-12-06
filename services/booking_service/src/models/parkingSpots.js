@@ -1,4 +1,3 @@
-// src/models/ParkingSpot.js
 const mongoose = require('mongoose');
 
 const parkingSpotSchema = new mongoose.Schema({
