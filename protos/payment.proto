@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package payment;
+
+// Define the PaymentService
+service PaymentService {
+    rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
+}
+
+// Define the request and response messages
+message PaymentRequest {
+    string bookingId = 1;
+    double amount = 2;
+    string userEmail = 3;
+    CardDetails cardDetails = 4;
+}
+
+message PaymentResponse {
+    bool success = 1;
+    string transactionId = 2;
+    string message = 3;
+}
+
+message CardDetails {
+    string number = 1;
+    int32 exp_month = 2;
+    int32 exp_year = 3;
+    string cvc = 4;
+}
+
+
+// syntax = "proto3";
+
+// package payment;
+
+// service PaymentService{
+//     rpc ProcessPayment(PaymentRequest) returns (PaymentResponse){}
+// }
+
+// message PaymentRequest{
+//     string bookingId=1;
+//     double amount = 2;
+//     string userEmail=3;
+// }
+
+// message PaymentResponse{
+//     bool success =1;
+//     string transactionId=2;
+//     string message =3;
+// }
+
+// message RefundRequest {
+//     string transactionId = 1;
+//     string reason = 2;
+// }
+  
+// message RefundResponse {
+//     bool success = 1;
+//     string message = 2;
+// }
+  

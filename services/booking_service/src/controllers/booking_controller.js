@@ -53,7 +53,15 @@ const bookingControllers = {
 
   async cancelBooking(req, res) {
     try {
-      const booking = await BookingSpot.findById(req.params.id);
+      const { id } = req.params;
+      if (!id) {
+        return res.status(400).json({
+          success: false,
+          message: 'Booking ID is required',
+        });
+      }
+      const booking = await BookingSpot.findById(id);
+      console.log(booking);
 
       if (!booking) {
         return res.status(404).json({
